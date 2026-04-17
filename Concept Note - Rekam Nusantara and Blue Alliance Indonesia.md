@@ -2,7 +2,7 @@
 ## Collaborative Partnership for Marine Protected Area Development across Blue Alliance Indonesia Sites
 
 **Prepared by:** Rekam Nusantara Foundation
-**Date:** April 2026
+**Date:** 17 April 2026
 **Status:** Internal Working Document
 
 ---
