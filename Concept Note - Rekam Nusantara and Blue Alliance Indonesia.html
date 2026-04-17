@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Concept Note — Rekam Nusantara & Blue Alliance Indonesia</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #1a2e3b;
+      background: #f4f8fb;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: linear-gradient(135deg, #003d5b 0%, #006b8f 50%, #0096b4 100%);
+      color: #fff;
+      padding: 60px 80px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7ecfe0;
+      margin-bottom: 12px;
+    }
+    .cover h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .cover h2 {
+      font-size: 17px;
+      font-weight: 400;
+      color: #b8e4f0;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cover-meta-item {
+      font-size: 13px;
+      color: #b8e4f0;
+    }
+    .cover-meta-item span {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #7ecfe0;
+      margin-bottom: 2px;
+    }
+    .org-badges {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 40px 60px;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(0,60,90,0.07);
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #0096b4;
+      margin-bottom: 6px;
+    }
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #003d5b;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e0f0f7;
+    }
+    .section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #005f80;
+      margin: 22px 0 10px;
+    }
+    .section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #003d5b;
+      margin: 16px 0 8px;
+    }
+    .section p {
+      margin-bottom: 14px;
+      color: #2c4a5a;
+    }
+    .section ul, .section ol {
+      margin: 8px 0 14px 22px;
+      color: #2c4a5a;
+    }
+    .section li {
+      margin-bottom: 7px;
+    }
+    .section li strong {
+      color: #003d5b;
+    }
+
+    /* ── ORG PROFILE CARDS ── */
+    .org-card {
+      border-left: 4px solid #0096b4;
+      background: #f0fafd;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .org-card.bai {
+      border-left-color: #00a878;
+      background: #f0fdf8;
+    }
+    .org-card .org-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #003d5b;
+      margin-bottom: 6px;
+    }
+    .vm-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 14px 0;
+    }
+    .vm-box {
+      background: #fff;
+      border-radius: 7px;
+      padding: 14px 16px;
+      border: 1px solid #d0eaf5;
+    }
+    .vm-box.bai-box {
+      border-color: #b8edd8;
+    }
+    .vm-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #0096b4;
+      margin-bottom: 5px;
+    }
+    .vm-label.bai-label { color: #00a878; }
+    .vm-box p { font-size: 13.5px; color: #2c4a5a; margin: 0; }
+
+    .stat-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 14px 0;
+    }
+    .stat-box {
+      background: #fff;
+      border: 1px solid #d0eaf5;
+      border-radius: 7px;
+      padding: 12px 18px;
+      text-align: center;
+      min-width: 110px;
+    }
+    .stat-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0096b4;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: #5a7a8a;
+      margin-top: 2px;
+    }
+
+    .highlight-box {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 7px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 13.5px;
+      color: #5a4000;
+    }
+    .highlight-box strong { color: #3a2800; }
+
+    .partners-list {
+      font-size: 12.5px;
+      color: #4a6a7a;
+      line-height: 1.8;
+    }
+
+    /* ── RATIONALE TABLE ── */
+    .collab-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13.5px;
+    }
+    .collab-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .collab-table th:first-child {
+      background: #003d5b;
+      color: #fff;
+      border-radius: 7px 0 0 0;
+    }
+    .collab-table th:last-child {
+      background: #006644;
+      color: #fff;
+      border-radius: 0 7px 0 0;
+    }
+    .collab-table td {
+      padding: 10px 16px;
+      vertical-align: top;
+      border-bottom: 1px solid #e8f4f9;
+    }
+    .collab-table td:first-child {
+      background: #f0fafd;
+      color: #003d5b;
+    }
+    .collab-table td:last-child {
+      background: #f0fdf8;
+      color: #004d33;
+    }
+    .collab-table tr:last-child td:first-child { border-radius: 0 0 0 7px; }
+    .collab-table tr:last-child td:last-child  { border-radius: 0 0 7px 0; }
+
+    /* ── OBJECTIVES ── */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .obj-card {
+      border-radius: 8px;
+      padding: 18px 20px;
+      border: 1px solid #d0eaf5;
+      background: #f7fbfd;
+    }
+    .obj-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #0096b4;
+      margin-bottom: 5px;
+    }
+    .obj-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #003d5b;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .obj-body {
+      font-size: 13px;
+      color: #3a5a6a;
+      line-height: 1.6;
+    }
+    .obj-card.nat { border-top: 3px solid #0096b4; }
+    .obj-card.prov { border-top: 3px solid #8b5cf6; }
+    .obj-card.site { border-top: 3px solid #00a878; }
+
+    /* ── DIAGRAM ── */
+    .diagram-wrap {
+      background: #f7fbfd;
+      border: 1px solid #d0eaf5;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+    .diagram-legend {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #4a6a7a;
+    }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── ROLES ── */
+    .role-card {
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 14px 0;
+    }
+    .role-card.rekam {
+      background: #eef7fb;
+      border-left: 5px solid #0096b4;
+    }
+    .role-card.bai {
+      background: #edfaf4;
+      border-left: 5px solid #00a878;
+    }
+    .role-card.joint {
+      background: #f3eeff;
+      border-left: 5px solid #8b5cf6;
+    }
+    .role-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    .role-card.rekam .role-title { color: #0096b4; }
+    .role-card.bai .role-title { color: #00a878; }
+    .role-card.joint .role-title { color: #8b5cf6; }
+    .role-card ul { margin-left: 18px; }
+    .role-card li { font-size: 13.5px; margin-bottom: 6px; color: #2c4a5a; }
+
+    /* ── OUTCOMES TABLE ── */
+    .outcomes-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+    .outcomes-table th {
+      background: #003d5b;
+      color: #fff;
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .outcomes-table th:first-child { border-radius: 7px 0 0 0; }
+    .outcomes-table th:last-child  { border-radius: 0 7px 0 0; }
+    .outcomes-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #e8f4f9;
+      vertical-align: top;
+      color: #2c4a5a;
+    }
+    .outcomes-table tr:nth-child(even) td { background: #f5fbfd; }
+    .outcomes-table tr:last-child td:first-child { border-radius: 0 0 0 7px; }
+    .outcomes-table tr:last-child td:last-child  { border-radius: 0 0 7px 0; }
+
+    /* ── FOOTER ── */
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #7a9aaa;
+      padding: 12px 24px;
+      background: #fff;
+      border-radius: 7px;
+      margin-top: 10px;
+      border: 1px solid #e0eef5;
+      font-style: italic;
+    }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid #e0eef5; margin: 20px 0; }
+
+    @media (max-width: 680px) {
+      .cover { padding: 36px 24px 32px; }
+      .container { padding: 20px 16px 40px; }
+      .section { padding: 24px 20px; }
+      .vm-row, .obj-grid { grid-template-columns: 1fr; }
+      .collab-table { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Concept Note · Internal Working Document</div>
+  <h1>Collaborative Partnership for Marine Protected Area Development<br>across Blue Alliance Indonesia Sites</h1>
+  <h2>Rekam Nusantara Foundation &amp; Blue Alliance Indonesia</h2>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><span>Prepared by</span>Rekam Nusantara Foundation</div>
+    <div class="cover-meta-item"><span>Date</span>April 2026</div>
+    <div class="cover-meta-item"><span>Status</span>Internal Working Document</div>
+  </div>
+  <div class="org-badges">
+    <div class="badge">Rekam Nusantara Foundation</div>
+    <div class="badge">Blue Alliance Indonesia</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1. BACKGROUND -->
+  <div class="section">
+    <div class="section-number">Section 01</div>
+    <h2>Background</h2>
+    <p>Indonesia is the world's largest archipelago nation and lies at the heart of the Coral Triangle — the global epicenter of marine biodiversity, where coral reefs and coastal ecosystems function as breeding, nursery, and feeding grounds for an extraordinary array of marine species. The country's coastal and marine ecosystems support the livelihoods of millions of fishing communities who depend directly on healthy seas for food security and economic well-being.</p>
+    <p><strong>Blue Alliance Indonesia</strong> operates across two major MPA complexes within this context. In <strong>Central Sulawesi</strong>, Blue Alliance has managed the <strong>Banggai MPA Network</strong> since 2021 — an 810,000-hectare system recognized as a global center of marine biodiversity, particularly for its extraordinary concentrations of endemic reef fish species. In <strong>Maluku Province</strong> — a critical node of the Coral Triangle — several new Marine Protected Areas were established between 2021 and 2022, covering island groups including Tanimbar, Damer, Babar, Romang, Mdona Hiera, Lakor, Moa, and Letti. This culminated in a landmark milestone on 12 February 2026, when the Maluku Provincial Government signed a long-term co-management agreement with Blue Alliance Indonesia Foundation, establishing collaborative governance across <strong>1.5 million hectares</strong> of ocean across six conservation areas — one of the largest provincial marine conservation commitments in Indonesia's history.</p>
+    <p>Across both sites, significant challenges remain. MPAs face persistent threats including overfishing, illegal destructive fishing (blast fishing and compressor fishing), climate-driven coral mortality, habitat degradation, and community resistance stemming from limited livelihood alternatives. Effective MPA management requires robust scientific data, adaptive monitoring systems, community empowerment, and sustained financing — capacities that demand a multi-institutional approach.</p>
+    <p>It is within this context that <strong>Rekam Nusantara Foundation</strong> and <strong>Blue Alliance Indonesia</strong> have identified a strategic opportunity to formalize their collaboration, combining complementary organizational strengths to advance the effective development and long-term sustainability of MPAs across all Blue Alliance Indonesia sites.</p>
+  </div>
+
+  <!-- 2. PROBLEM STATEMENT -->
+  <div class="section">
+    <div class="section-number">Section 02</div>
+    <h2>Problem Statement</h2>
+    <p>While the legal and institutional framework for MPA governance across BAI sites is strengthening, several critical gaps constrain the effectiveness of conservation efforts on the ground:</p>
+    <ol>
+      <li><strong>Data and Evidence Gap</strong> — Many MPAs across BAI's sites lack robust baseline data on fish stocks, reef health, and fisheries dynamics needed to guide adaptive management decisions.</li>
+      <li><strong>Fisheries Science Capacity</strong> — Local capacity for stock assessment, fisheries resource monitoring, and evidence-based fisheries management planning remains limited.</li>
+      <li><strong>Community Engagement Deficit</strong> — Fishing communities in and around MPAs often perceive conservation restrictions as economic threats rather than opportunities, leading to low compliance and limited participation.</li>
+      <li><strong>Blue Economy Underdevelopment</strong> — Alternative and sustainable livelihood options — including aquaculture, ecotourism, and blue carbon — remain nascent, leaving communities without income pathways that align with conservation goals.</li>
+      <li><strong>Communication and Advocacy Gap</strong> — The value and impact of MPA conservation across BAI sites is insufficiently documented and communicated to national policymakers, donors, and the broader public.</li>
+      <li><strong>Ecosystem Valuation</strong> — The economic and ecological value of the marine ecosystems across BAI sites has not been systematically assessed, limiting the case for sustained public and private investment in conservation.</li>
+    </ol>
+  </div>
+
+  <!-- 3. ORGANIZATIONAL PROFILES -->
+  <div class="section">
+    <div class="section-number">Section 03</div>
+    <h2>Organizational Profiles</h2>
+
+    <!-- REKAM -->
+    <div class="org-card">
+      <div class="org-name">3.1 &nbsp;Rekam Nusantara Foundation (Yayasan Rekam Jejak Alam Nusantara)</div>
+      <p style="font-size:13.5px; margin-top:8px;">Rekam Nusantara Foundation is an Indonesian non-profit organization dedicated to advancing biodiversity conservation through innovative research, science communication, and community engagement. Founded in 2013 and headquartered in Bogor, West Java, the Foundation has a team of <strong>100+ people</strong> and collaborates with ministries, local governments, universities, and national and international NGOs across Indonesia.</p>
+
+      <div class="vm-row">
+        <div class="vm-box">
+          <div class="vm-label">Vision</div>
+          <p>Capturing and preserving the extraordinary natural heritage of the archipelago to inspire collective awareness and action for environmental sustainability and a better future of Indonesia.</p>
+        </div>
+        <div class="vm-box">
+          <div class="vm-label">Mission</div>
+          <p>Integrating art, science, and traditional wisdom to achieve environmental sustainability and human well-being across the Indonesian archipelago. <em>("Documenting Knowledge, Preserving Life")</em></p>
+        </div>
+      </div>
+
+      <h4>Ocean Program — Fisheries Resource Center of Indonesia (FRCI)</h4>
+      <p style="font-size:13.5px;">FRCI is Rekam Nusantara's marine and fisheries science unit, focused on bridging the data-policy nexus to support sustainable ocean management.</p>
+
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">23</div><div class="stat-label">MPAs Supported<br>2022–2025</div></div>
+        <div class="stat-box"><div class="stat-num">8</div><div class="stat-label">Fisheries Mgmt<br>Areas</div></div>
+        <div class="stat-box"><div class="stat-num">120K+</div><div class="stat-label">Length Data<br>(IKAN App)</div></div>
+        <div class="stat-box"><div class="stat-num">11</div><div class="stat-label">Peer-review<br>Journals (2025)</div></div>
+      </div>
+
+      <ul style="font-size:13.5px; margin-top:10px;">
+        <li><strong>Sustainable Fisheries Management</strong> — Science-based management of small-scale fisheries through stock assessments, Ecosystem-Based Fisheries Management (EBFM) using Ecopath with Ecosim (EwE) modeling, and fisheries management planning. Served as Scientific Service Provider (SSP) for KOMNAS KAJISKAN across 11 national Fisheries Management Areas.</li>
+        <li><strong>IKAN App</strong> — A citizen science mobile application for community-based fisheries data collection, deployed across Indonesia's major fishing ports. Cumulative data (2019–2025): 15,262 trip records and 120,551 length measurements. Active in Aru Island (Maluku), Central Java, South Sulawesi, Sumatra, NTB, and NTT.</li>
+        <li><strong>MPA Management</strong> — Supported MMAF in the MPA &amp; OECM Vision 2045 (30×45 target); developed Offshore and Blue Carbon MPA guidelines; strengthened the national conservation database (SIDAKO). Site-level work in Central Java (6 MPAs) and Liukang Tangaya MPA, South Sulawesi.</li>
+        <li><strong>Ocean Accounts</strong> — Advancing Indonesia's ocean accounting system through the Ocean for Development (OfD) Program with Norway (NIVA, Statistics Norway). Pilot accounts completed for Savu Sea, Kapoposang, and <strong>Aru MPAs (Maluku)</strong>. Contributed to Indonesia's revised ocean governance roadmap (2025–2045).</li>
+        <li><strong>Blue Carbon</strong> — Published <em>Indonesia's Blue Carbon Management Prospectus 2025</em> and <em>The Seagrass Blue Carbon Measurement Manual</em>. Field programs in Central Java and Saleh Bay, West Nusa Tenggara.</li>
+        <li><strong>Species Conservation &amp; IUU Fishing</strong> — Shark and Ray Conservation Program (CITES compliance, 400+ trained). Led development of the National Plan of Action to Prevent, Deter and Eliminate IUU Fishing (2025–2029) with PSDKP-MMAF.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>Relevance to BAI Sites:</strong> FRCI has existing operational footholds across BAI's key sites. In <strong>Maluku</strong>, IKAN app data collection is active in <strong>Aru Island</strong> and ocean accounting pilots have been completed at <strong>Aru MPAs</strong>. In <strong>Central Sulawesi</strong>, IKAN app is deployed in South Sulawesi (adjacent to the Banggai region), and FRCI's active MPA support at <strong>Liukang Tangaya MPA</strong> provides a model for science-based co-management. Together, these provide a data and institutional foundation for expanded collaboration across all BAI sites.
+      </div>
+
+      <div class="partners-list"><strong>Key Partners:</strong> KKP/MMAF, PSDKP, BRIN, BAPPENAS, IPB University, Hasanuddin University, Brawijaya University, YKAN/TNC, WWF Indonesia, Coral Triangle Center, Pesisir Lestari, NIVA Norway, CEFAS UK, GEF, IUCN, Ford Foundation, SFACT, Murdoch University, Global Ocean Accounts Partnership, Blue Carbon Accelerator Fund, Norad, Rainforest Trust, Lenfest Ocean Program, Oceans5.</div>
+    </div>
+
+    <!-- BLUE ALLIANCE -->
+    <div class="org-card bai">
+      <div class="org-name">3.2 &nbsp;Blue Alliance Indonesia</div>
+      <p style="font-size:13.5px; margin-top:8px;">Blue Alliance is an international non-profit organization founded in 2015, dedicated to establishing a global network of Marine Protected Areas. Blue Alliance Indonesia manages the <strong>Banggai MPA Network</strong> in Central Sulawesi (810,000 hectares, since 2021) and — since February 2026 — holds a co-management mandate across <strong>1.5 million hectares</strong> in <strong>Maluku Province</strong> in partnership with the Maluku Provincial Government.</p>
+
+      <div class="vm-row">
+        <div class="vm-box bai-box">
+          <div class="vm-label bai-label">Mission</div>
+          <p>To actively manage large Marine Protected Areas to regenerate coral reefs and grow a blue economy that lifts surrounding fishing communities out of poverty.</p>
+        </div>
+        <div class="vm-box bai-box">
+          <div class="vm-label bai-label">Maluku Presence (Feb 2026)</div>
+          <p>Six conservation areas under co-management with the Maluku Provincial Government, including Koon, Mdona Hiera, Romang, Damer, and Babar Islands MPAs. Total: <strong>1.5 million hectares</strong>.</p>
+        </div>
+      </div>
+
+      <h4>Operational Model — Two Complementary Teams</h4>
+      <ul style="font-size:13.5px;">
+        <li><strong>MPA Management Team</strong> — Patrol and enforcement, reef and fish biomass monitoring, spawning aggregation studies, community engagement, and ranger programs. Deploys <strong>180+ rangers</strong>, community officers, and managers across sites.</li>
+        <li><strong>Blue Economy Team</strong> — Develops sustainable blue economy solutions including:
+          <ul>
+            <li><em>Aquahub</em> — Community-based aquaculture (sea cucumber pilot programs)</li>
+            <li><em>BlueWild EcoVentures</em> — Reef-positive ecotourism (Nomad Archipelago liveaboard cruises)</li>
+            <li><em>Blue Carbon</em> — Carbon finance structures linked to reef and coastal ecosystem protection</li>
+            <li><em>Sustainable Fisheries</em> — Community training in value-added fish processing</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="partners-list" style="margin-top:12px;"><strong>Key Partners:</strong> Maluku Provincial Government, Central Sulawesi Provincial Government, ICRI (International Coral Reef Initiative), For the Ocean Foundation, and private impact investors.</div>
+    </div>
+  </div>
+
+  <!-- 4. RATIONALE -->
+  <div class="section">
+    <div class="section-number">Section 04</div>
+    <h2>Rationale for Collaboration</h2>
+    <p>The two organizations bring highly complementary capacities that, when combined, can address the full spectrum of challenges facing MPA development across Blue Alliance Indonesia's sites:</p>
+
+    <table class="collab-table">
+      <thead>
+        <tr>
+          <th>Rekam Nusantara Foundation</th>
+          <th>Blue Alliance Indonesia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Science &amp; research</strong> — fisheries stock assessments, reef ecology, ocean accounting, blue carbon</td>
+          <td>Large-scale MPA field operations &amp; enforcement</td>
+        </tr>
+        <tr>
+          <td><strong>Publications</strong> — peer-reviewed papers, technical reports, policy briefs, science communication</td>
+          <td>180+ on-the-ground rangers &amp; community officers</td>
+        </tr>
+        <tr>
+          <td>IKAN app for fisheries data collection</td>
+          <td>Blue economy enterprise development (aquaculture, ecotourism)</td>
+        </tr>
+        <tr>
+          <td>National policy networks (KKP, BRIN, BAPPENAS, IPB)</td>
+          <td>Formal co-management mandates with Maluku and Central Sulawesi Provincial Governments</td>
+        </tr>
+        <tr>
+          <td>Science-to-policy translation &amp; advocacy</td>
+          <td>Community livelihood programs</td>
+        </tr>
+        <tr>
+          <td>Blue carbon science &amp; methodology</td>
+          <td>Blue carbon financing &amp; carbon market access</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Neither organization alone possesses the full range of expertise required for effective MPA development at the scale now mandated across BAI sites. This collaboration is therefore not additive but <strong>synergistic</strong> — the combined capacity significantly exceeds the sum of each organization's individual contribution.</p>
+  </div>
+
+  <!-- 5. GOAL AND OBJECTIVES -->
+  <div class="section">
+    <div class="section-number">Section 05</div>
+    <h2>Goal and Objectives</h2>
+
+    <div style="background:#003d5b; color:#fff; border-radius:8px; padding:20px 24px; margin-bottom:24px;">
+      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7ecfe0; margin-bottom:6px;">Overall Goal</div>
+      <div style="font-size:15.5px; line-height:1.6;">To strengthen the effectiveness, sustainability, and equity of Marine Protected Area development across Blue Alliance Indonesia's sites through a science-based, community-centered, and financially resilient collaborative model.</div>
+    </div>
+
+    <h3>Specific Objectives</h3>
+    <div class="obj-grid">
+      <div class="obj-card nat">
+        <div class="obj-num">Objective 1 · National Level</div>
+        <div class="obj-title">Strengthen the Scientific Foundation for MPA Management</div>
+        <div class="obj-body">Establish a robust, evidence-based fisheries and ecosystem monitoring system to guide adaptive MPA management, and translate scientific findings into peer-reviewed publications, technical reports, and knowledge products.</div>
+      </div>
+      <div class="obj-card prov">
+        <div class="obj-num">Objective 2 · Provincial Level</div>
+        <div class="obj-title">Develop an Effective MPA Management Framework</div>
+        <div class="obj-body">Support the development of science-based MPA management plans and governance frameworks for conservation areas across BAI sites, integrating ocean accounting as a tool to systematically value marine ecosystems and inform evidence-based decision-making.</div>
+      </div>
+      <div class="obj-card site">
+        <div class="obj-num">Objective 3 · Site &amp; Community Level</div>
+        <div class="obj-title">Empower Coastal Communities</div>
+        <div class="obj-body">Strengthen the capacity and agency of fishing communities within and adjacent to MPAs across BAI sites through participatory monitoring, sustainable livelihood development, and community rights documentation.</div>
+      </div>
+      <div class="obj-card site">
+        <div class="obj-num">Objective 4 · Site &amp; Community Level</div>
+        <div class="obj-title">Develop Blue Economy and Conservation Finance</div>
+        <div class="obj-body">Pilot and scale sustainable blue economy enterprises — including sustainable fisheries, aquaculture, ecotourism, and blue carbon — to reduce poverty and generate long-term conservation finance, supported by ecosystem valuation from ocean accounting frameworks.</div>
+      </div>
+      <div class="obj-card nat" style="grid-column: 1 / -1;">
+        <div class="obj-num">Objective 5 · National Level</div>
+        <div class="obj-title">Communicate and Advocate</div>
+        <div class="obj-body">Produce high-quality scientific publications and public communications documenting the value, impact, and progress of MPA conservation across BAI sites for national policy audiences, donors, and the broader public.</div>
+      </div>
+    </div>
+
+    <!-- DIAGRAM LEGEND -->
+    <div class="diagram-legend" style="margin-bottom:12px;">
+      <div class="legend-item"><div class="legend-dot" style="background:#0096b4;"></div> National Level — Rekam Nusantara</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6;"></div> Provincial Level — Joint</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#00a878;"></div> Site &amp; Community Level — Blue Alliance</div>
+    </div>
+
+    <!-- MERMAID DIAGRAM -->
+    <div class="diagram-wrap">
+      <div class="pre-mermaid" style="font-size:13px; color:#4a6a7a; margin-bottom:14px; font-weight:600;">Program Logic Diagram</div>
+      <div class="mermaid">
+flowchart TD
+    G(["OVERALL GOAL
+    Strengthen effectiveness, sustainability & equity
+    of MPA Development across BAI Sites"]):::goal
+
+    G --> O1 & O2 & O3 & O4 & O5
+
+    subgraph NAT["  NATIONAL LEVEL — Rekam Nusantara  "]
+        O1["Obj 1
+        Strengthen Scientific Foundation
+        for MPA Management"]:::nat
+        O5["Obj 5
+        Communicate & Advocate
+        Science and Publications"]:::nat
+    end
+
+    subgraph PROV["  PROVINCIAL LEVEL — Joint Collaboration  "]
+        O2["Obj 2
+        Develop Effective MPA
+        Management Framework"]:::prov
+    end
+
+    subgraph SITE["  SITE & COMMUNITY LEVEL — Blue Alliance  "]
+        O3["Obj 3
+        Empower Coastal
+        Communities"]:::site
+        O4["Obj 4
+        Develop Blue Economy &
+        Conservation Finance"]:::site
+    end
+
+    O1 --> R1["Fisheries & ecosystem data
+    Peer-reviewed publications
+    Technical reports"]:::out
+    O2 --> R2["Science-based MPA management plans
+    Ocean accounting integrated
+    into governance frameworks"]:::out
+    O3 --> R3["Community conservation agreements
+    Sustainable livelihoods
+    Local capacity built"]:::out
+    O4 --> R4["Blue economy enterprises operational
+    Blue carbon pipeline
+    Long-term conservation finance"]:::out
+    O5 --> R5["Policy briefs & advocacy
+    Science communications
+    National & international visibility"]:::out
+
+    R1 & R2 & R3 & R4 & R5 --> IMP(["IMPACT
+    Effective, Financially Sustainable & Equitable
+    MPA Governance across BAI Sites"]):::impact
+
+    classDef goal fill:#003d5b,color:#fff,stroke:#003d5b,rx:8
+    classDef nat fill:#e0f4fb,color:#003d5b,stroke:#0096b4,stroke-width:2px
+    classDef prov fill:#ede9fe,color:#3b0764,stroke:#8b5cf6,stroke-width:2px
+    classDef site fill:#d1fae5,color:#064e3b,stroke:#00a878,stroke-width:2px
+    classDef out fill:#f8fafc,color:#1e3a4a,stroke:#b0cdd8,stroke-width:1px
+    classDef impact fill:#0096b4,color:#fff,stroke:#0096b4,rx:8
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. ROLES -->
+  <div class="section">
+    <div class="section-number">Section 06</div>
+    <h2>Roles and Responsibilities</h2>
+
+    <div class="role-card rekam">
+      <div class="role-title">Rekam Nusantara Foundation — Science, Publication &amp; National Policy</div>
+      <ul>
+        <li><strong>Leading scientific research</strong> — conducting fisheries stock assessments, reef and ecosystem surveys, ocean accounting, and blue carbon analysis to build the evidence base for MPA management across BAI sites</li>
+        <li><strong>Publications and knowledge products</strong> — producing peer-reviewed papers, technical reports, policy briefs, and science communication materials documenting the collaboration's findings and impact</li>
+        <li><strong>Science-to-policy translation</strong> — linking research outputs to national fisheries management systems, MPA &amp; OECM Vision 2045, and relevant government agencies (KKP, BRIN, BAPPENAS)</li>
+        <li><strong>National policy engagement</strong> — facilitating national policy dialogues, regulatory development, and technical guidelines relevant to BAI's MPA network</li>
+        <li><strong>Academic and research networks</strong> — mobilizing national and international scientific institutions to strengthen the collaboration's credibility and reach</li>
+      </ul>
+    </div>
+
+    <div class="role-card bai">
+      <div class="role-title">Blue Alliance Indonesia — Community &amp; Site Level</div>
+      <ul>
+        <li>Managing day-to-day MPA operations, enforcement, and monitoring across all BAI co-management areas (Banggai MPA Network in Central Sulawesi and the six conservation areas in Maluku Province)</li>
+        <li>Leading community engagement, livelihood development, and local capacity building within and adjacent to MPAs across all BAI sites</li>
+        <li>Developing blue economy enterprises (aquaculture, ecotourism, blue carbon) to generate sustainable income for coastal communities</li>
+        <li>Providing field logistics, ranger networks, and community access infrastructure for joint activities</li>
+      </ul>
+    </div>
+
+    <div class="role-card joint">
+      <div class="role-title">Joint Collaboration — Provincial Level</div>
+      <ul>
+        <li>Coordinating with relevant provincial governments (Maluku and Central Sulawesi) to align the partnership with provincial conservation priorities and co-management commitments</li>
+        <li>Co-designing the monitoring and evaluation framework and shared data governance protocols</li>
+        <li>Joint fundraising, donor engagement, and reporting</li>
+        <li>Co-producing key publications, policy briefs, and advocacy materials for provincial and national audiences</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. OUTCOMES -->
+  <div class="section">
+    <div class="section-number">Section 07</div>
+    <h2>Expected Outcomes and Indicators</h2>
+
+    <table class="outcomes-table">
+      <thead>
+        <tr>
+          <th>Expected Outcome</th>
+          <th>Indicator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Improved fisheries data coverage across BAI sites</td>
+          <td>IKAN app active in ≥5 fishing communities across BAI sites; fish stock assessments completed for priority species</td>
+        </tr>
+        <tr>
+          <td>Strengthened MPA management effectiveness</td>
+          <td>Standardized monitoring data integrated into MPA management plans for ≥3 conservation areas across BAI sites</td>
+        </tr>
+        <tr>
+          <td>Ocean accounting framework established</td>
+          <td>Pilot ocean account completed and published for ≥2 MPAs across BAI sites</td>
+        </tr>
+        <tr>
+          <td>Enhanced community engagement</td>
+          <td>≥3 community conservation agreements formalized; community monitors trained and active across BAI sites</td>
+        </tr>
+        <tr>
+          <td>Blue carbon pipeline initiated</td>
+          <td>Mangrove/seagrass baseline maps produced; carbon feasibility assessment completed at ≥1 BAI site</td>
+        </tr>
+        <tr>
+          <td>Increased visibility and advocacy</td>
+          <td>Multimedia communication package produced; ≥1 joint policy brief submitted to national government</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER NOTE -->
+  <div class="footer-note">
+    This concept note is an internal working document prepared by Rekam Nusantara Foundation for the purposes of partnership planning and internal alignment with Blue Alliance Indonesia. It does not constitute a binding agreement.
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#e0f4fb',
+      primaryTextColor: '#003d5b',
+      primaryBorderColor: '#0096b4',
+      lineColor: '#5a8fa0',
+      secondaryColor: '#d1fae5',
+      tertiaryColor: '#ede9fe',
+      fontSize: '14px'
+    },
+    flowchart: { curve: 'basis', padding: 20 }
+  });
+</script>
+</body>
+</html>
